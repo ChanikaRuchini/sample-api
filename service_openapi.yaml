@@ -10,9 +10,9 @@ servers:
       port:
         default: "9090"
 paths:
-  /users:
+  /accounts:
     get:
-      summary: Get all users
+      summary: Get all accounts data
       operationId: getUsers
       responses:
         "200":
@@ -22,7 +22,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/User"
+                  $ref: "#/components/schemas/account"
         "500":
           description: Internal server error
           content:
@@ -32,13 +32,39 @@ paths:
 
 components:
   schemas:
-    Users:
+    account:
       required:
-        - name
+        - account_id
         - age
       type: object
       properties:
+        account_id:
+          type: string
+        balances:
+          $ref: "#/components/schemas/balances"
+        mask:
+          type: string
         name:
           type: string
-        age:
+        official_name:
+          type: string
+        persistent_account_id:
+          type: string
+        subtype:
+          type: string
+        type:
+          type: string
+
+    balances:
+      type: object
+      properties:
+        available:
+          type: integer
+        current:
+          type: integer
+        iso_currency_code:
+          type: string
+        limit:
+          type: integer
+        unofficial_currency_code:
           type: string
