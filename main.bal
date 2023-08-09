@@ -73,7 +73,7 @@ service / on new http:Listener(9090) {
                 "webhook": "https://www.genericwebhookurl.com/webhook"
             },
             "request_id": "bkVE1BHWMAZ9Rnr"
-        }
+        };
 
         // Return the JSON array
         return accountsData;
